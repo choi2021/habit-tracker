@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { createRef } from "react/cjs/react.production.min";
 import styles from "./addForm.module.css";
 
-class AddForm extends Component {
+class AddForm extends PureComponent {
   formRef = createRef();
   inputRef = createRef();
   onSubmit = (e) => {
     e.preventDefault();
     const value = this.inputRef.current.value;
-    this.props.onAdd(value);
+    value && this.props.onAdd(value);
     this.formRef.current.reset();
   };
 

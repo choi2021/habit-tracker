@@ -1,7 +1,15 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styles from "./habit.module.css";
 
-class Habit extends Component {
+class Habit extends PureComponent {
+  componentDidMount() {
+    console.log(`habit ${this.props.habit.name} mounted`);
+  }
+
+  componentWillUnmount() {
+    console.log(`habit ${this.props.habit.name} unmounted`);
+  }
+
   handleIncrement = () => {
     this.props.onIncrement(this.props.habit);
   };
@@ -16,6 +24,7 @@ class Habit extends Component {
 
   render() {
     const { name, count } = this.props.habit;
+    console.log(`${name}`);
     return (
       <li className={styles.habit}>
         <span className={styles.name}>{name}</span>
