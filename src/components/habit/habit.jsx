@@ -18,7 +18,7 @@ class Habit extends Component {
     const { name, count } = this.props.habit;
     return (
       <li className={styles.habit}>
-        <p className={styles.name}>{name}</p>
+        <span className={styles.name}>{name}</span>
         <span className={styles.count}>{count}</span>
         <button className={styles.btn} onClick={this.handleIncrement}>
           <i className="fas fa-plus"></i>

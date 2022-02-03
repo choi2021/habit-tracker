@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  padding: 1em 2em;
+  background-color: bisque;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+  color: cadetblue;
+  margin-right: 0.5em;
+}
+
+.title {
+  margin: 0;
+  margin-right: 0.5em;
+}
+
+.totalCount {
+  font-size: 2rem;
+  background-color: cornflowerblue;
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  line-height: 2.5rem;
+  color: white;
+  border-radius: 50%;
+}
