@@ -1,49 +1,39 @@
-import React, { PureComponent } from "react";
 import styles from "./habit.module.css";
+import React, { memo } from "react";
 
-class Habit extends PureComponent {
-  componentDidMount() {
-    console.log(`habit ${this.props.habit.name} mounted`);
-  }
-
-  componentWillUnmount() {
-    console.log(`habit ${this.props.habit.name} unmounted`);
-  }
-
-  handleIncrement = () => {
-    this.props.onIncrement(this.props.habit);
+const Habit = memo(({ onIncrement, onDecrement, onDelete, habit }) => {
+  const handleIncrement = () => {
+    onIncrement(habit);
   };
 
-  handleDecrement = () => {
-    this.props.onDecrement(this.props.habit);
+  const handleDecrement = () => {
+    onDecrement(habit);
   };
 
-  handleDelete = () => {
-    this.props.onDelete(this.props.habit);
+  const handleDelete = () => {
+    onDelete(habit);
   };
 
-  render() {
-    const { name, count } = this.props.habit;
-    console.log(`${name}`);
-    return (
-      <li className={styles.habit}>
-        <span className={styles.name}>{name}</span>
-        <span className={styles.count}>{count}</span>
-        <button className={styles.btn} onClick={this.handleIncrement}>
-          <i className="fas fa-plus"></i>
-        </button>
-        <button className={styles.btn} onClick={this.handleDecrement}>
-          <i className="fas fa-minus"></i>
-        </button>
-        <button
-          className={`${styles.btn} ${styles.deleteBtn}`}
-          onClick={this.handleDelete}
-        >
-          <i className="fas fa-trash"></i>
-        </button>
-      </li>
-    );
-  }
-}
+  const { name, count } = habit;
+  console.log(`${name}`);
+  return (
+    <li className={styles.habit}>
+      <span className={styles.name}>{name}</span>
+      <span className={styles.count}>{count}</span>
+      <button className={styles.btn} onClick={handleIncrement}>
+        <i className="fas fa-plus"></i>
+      </button>
+      <button className={styles.btn} onClick={handleDecrement}>
+        <i className="fas fa-minus"></i>
+      </button>
+      <button
+        className={`${styles.btn} ${styles.deleteBtn}`}
+        onClick={handleDelete}
+      >
+        <i className="fas fa-trash"></i>
+      </button>
+    </li>
+  );
+});
 
 export default Habit;
